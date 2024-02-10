@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>User Registration Form</title>
+	<style>
+		form {
+			border: 3px solid #f1f1f1;
+			width: 50%;
+			margin: auto;
+			padding: 10px;
+		}
+		input[type=text], input[type=password] {
+			width: 100%;
+			padding: 12px 20px;
+			margin: 8px 0;
+			display: inline-block;
+			border: 1px solid #ccc;
+			box-sizing: border-box;
+		}
+		button[type=submit] {
+			background-color: #4CAF50;
+			color: white;
+			padding: 14px 20px;
+			margin: 8px 0;
+			border: none;
+			cursor: pointer;
+			width: 100%;
+		}
+		button[type=submit]:hover {
+			background-color: #45a049;
+		}
+		.container {
+			padding: 16px;
+		}
+		span.psw {
+			float: right;
+			padding-top: 16px;
+		}
+		@media screen and (max-width: 600px) {
+			form {
+				width: 80%;
+			}
+		}
+	</style>
+</head>
+<body>
+	<form method="post">
+        {% csrf_token %}
+		<div class="container">
+			<h1>Register</h1>
+			<p>Please fill in this form to create an account.</p>
+			<hr>
+			<label for="username"><b>Username</b></label>
+			<input type="text" placeholder="Enter Username" name="username" id="username" required>
+
+			<label for="password"><b>Password</b></label>
+			<input type="password" placeholder="Enter Password" name="password" id="password" required>
+
+			<label for="confirm_password"><b>Confirm Password</b></label>
+			<input type="password" placeholder="Confirm Password" name="confirm_password" id="confirm_password" required>
+
+			<label for="email"><b>Email</b></label>
+			<input type="text" placeholder="Enter Email" name="email" id="email" required>
+
+            <label for="image"><b>Insert Image</b></label>
+            <input type="file" placeholder="Insert Image" name="image" id="image" required>
+
+			<hr>
+			<button type="submit">Register</button>
+		</div>
+	</form>
+</body>
+</html>
+
