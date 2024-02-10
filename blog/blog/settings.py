@@ -48,7 +48,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-     'django.middleware.csrf.CsrfViewMiddleware',
+     
 ]
 
 ROOT_URLCONF = 'blog.urls'
@@ -56,7 +56,7 @@ ROOT_URLCONF = 'blog.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR/'blog_login'/'templates'],
+        'DIRS': [BASE_DIR/'blog_login'/'templates',BASE_DIR/'blog_posts'/'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

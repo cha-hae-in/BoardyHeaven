@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post Detail</title>
+    <!-- Add your CSS link here -->
+</head>
+<body>
+    <h1>Post Detail</h1>
+    <div class="post">
+        <img src="{{ post.image.url }}" alt="{{ post.caption }}">
+        <p>{{ post.caption }}</p>
+        <p>Posted by: {{ post.user.username }}</p>
+        <p>Posted on: {{ post.created_at }}</p>
+    </div>
+    <h2>Comments</h2>
+    <div class="comments">
+        {% for comment in comments %}
+            <div class="comment">
+                <p>{{ comment.content }}</p>
+                <p>Commented by: {{ comment.user.username }}</p>
+                <p>Commented on: {{ comment.created_at }}</p>
+            </div>
+        {% empty %}
+            <p>No comments yet.</p>
+        {% endfor %}
+    </div>
+</body>
+</html>
