@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
-from django.contrib.auth import login,logout, authenticate
+from django.contrib.auth import login as user_login,logout as user_logout, authenticate
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
@@ -34,20 +34,23 @@ def register(request):
 
     return render(request, 'register.html')
 
+from django.contrib.auth import authenticate, login
+
 def login(request):
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
-        user = authenticate(username=username, password=password)
+        user = authenticate(request, username=username, password=password)
         if user is not None:
-            login(user)
-            return redirect('homepage')       
+            user_login(request, user)
+            return redirect('homepage')
         
     return render(request, 'login.html')
+
 
 @login_required(login_url='homepage')
 def homepage(request):
     return render(request, 'homepage.html')
 def logout(request):
-    logout(request)
+    user_logout(request)
     redirect('login/')
